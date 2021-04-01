@@ -3,6 +3,13 @@ package src.p03.c01;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
+/**
+ * Clase AdaptadorParqueSincronizado. 
+ * 
+ * 
+ * @author Sergio Osuna y Miguel Collado
+ *
+ */
 public class Parque implements IParque{
 
 	// TODO 
@@ -45,6 +52,9 @@ public class Parque implements IParque{
 	// 
 	// TODO Método salirDelParque
 	//
+	public void salirDelParque(String puerta) {
+		
+	}
 	
 	
 	private void imprimirInfo (String puerta, String movimiento){

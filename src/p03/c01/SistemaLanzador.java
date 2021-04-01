@@ -1,5 +1,12 @@
 package src.p03.c01;
 
+/**
+ * Clase principal SistemaLanzador. 
+ * 
+ * 
+ * @author Sergio Osuna y Miguel Collado
+ *
+ */
 public class SistemaLanzador {
 	public static void main(String[] args) {
 		
@@ -19,7 +26,8 @@ public class SistemaLanzador {
 			// 
 			// TODO
 			//
-			
+			ActividadSalidaPuerta salidas = new ActividadSalidaPuerta(puerta, parque);
+			new Thread(salidas).start();
 			
 		}
 	}	
