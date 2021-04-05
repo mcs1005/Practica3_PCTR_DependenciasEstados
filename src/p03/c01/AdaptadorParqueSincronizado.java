@@ -1,12 +1,5 @@
 package src.p03.c01;
 
-/**
- * Clase AdaptadorParqueSincronizado. 
- * 
- * 
- * @author Sergio Osuna y Miguel Collado
- *
- */
 public class AdaptadorParqueSincronizado implements IParque{
 	
 	private IParque parque;

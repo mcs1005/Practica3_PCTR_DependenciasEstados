@@ -5,13 +5,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Clase ActividadSalidaPuerta. 
- * 
- * 
- * @author Sergio Osuna y Miguel Collado
- *
- */
 public class ActividadSalidaPuerta implements Runnable {
 
 	//
@@ -33,7 +26,7 @@ public class ActividadSalidaPuerta implements Runnable {
 				parque.salirDelParque(puerta);
 				TimeUnit.MILLISECONDS.sleep(new Random().nextInt(5)*1000);
 			} catch (InterruptedException e) {
-				Logger.getGlobal().log(Level.INFO, "Entrada interrumpida");
+				Logger.getGlobal().log(Level.INFO, "Salida interrumpida");
 				Logger.getGlobal().log(Level.INFO, e.toString());
 				return;
 			}
