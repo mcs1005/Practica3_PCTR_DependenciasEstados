@@ -1,5 +1,12 @@
 package src.p03.c01;
 
+/**
+ * Clase principal SistemaLanzador. 
+ * 
+ * 
+ * @author Sergio Osuna y Miguel Collado
+ *
+ */
 public class SistemaLanzador {
 	public static void main(String[] args) {
 		
@@ -7,7 +14,7 @@ public class SistemaLanzador {
 		char letra_puerta = 'A';
 		
 		System.out.println("¡Parque abierto!");
-		
+				
 		for (int i = 0; i < Integer.parseInt(args[0]); i++) {
 			
 			String puerta = ""+((char) (letra_puerta++));
@@ -16,14 +23,11 @@ public class SistemaLanzador {
 			ActividadEntradaPuerta entradas = new ActividadEntradaPuerta(puerta, parque);
 			new Thread (entradas).start();
 			
-			// 
-			// TODO
-			//
+			// Creación de hilos de salida
 			ActividadSalidaPuerta salidas = new ActividadSalidaPuerta(puerta, parque);
 			new Thread(salidas).start();
 			
 		}
-		System.out.println("ADIOOOOOOOOOOOOOOOS");
 	
 	}	
 }

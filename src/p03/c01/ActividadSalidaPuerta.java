@@ -5,11 +5,15 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Clase ActividadSalidaPuerta. 
+ * 
+ * 
+ * @author Sergio Osuna y Miguel Collado
+ *
+ */
 public class ActividadSalidaPuerta implements Runnable {
 
-	//
-	// TODO
-	//
 	private static final int NUMSALIDAS = 20;
 	private String puerta;
 	private IParque parque;

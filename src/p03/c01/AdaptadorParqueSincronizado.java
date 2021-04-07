@@ -1,5 +1,12 @@
 package src.p03.c01;
 
+/**
+ * Clase AdaptadorParqueSincronizado. 
+ * 
+ * 
+ * @author Sergio Osuna y Miguel Collado
+ *
+ */
 public class AdaptadorParqueSincronizado implements IParque{
 	
 	private IParque parque;
@@ -14,15 +21,12 @@ public class AdaptadorParqueSincronizado implements IParque{
 	}
 	
 	@Override
-	public synchronized void entrarAlParque(String puerta) {
+	public synchronized void entrarAlParque(String puerta) throws InterruptedException {
 		parque.entrarAlParque(puerta);
 	}
 	
-	//
-	// TODO
-	//
 	@Override
-	public synchronized void salirDelParque(String puerta) {
+	public synchronized void salirDelParque(String puerta) throws InterruptedException {
 		parque.salirDelParque(puerta);
 	}
 	
