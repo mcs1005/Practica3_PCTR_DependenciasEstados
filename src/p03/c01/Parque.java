@@ -13,14 +13,16 @@ import java.util.Hashtable;
 public class Parque implements IParque {
 
 	private final static int MAX_ENTRADAS = 20;
-	private final static int MAX_SALIDAS = 0;
+	private final static int MAX_SALIDAS = 20;
 
 	private int contadorPersonasTotales;
 	private Hashtable<String, Integer> contadoresPersonasPuerta;
+	private Hashtable<String, Integer> contadoresPersonasSalidaPuerta;
 
 	public Parque() { 
 		contadorPersonasTotales = 0;
 		contadoresPersonasPuerta = new Hashtable<String, Integer>();
+		contadoresPersonasSalidaPuerta = new Hashtable<String, Integer>();
 		
 	}
 
@@ -53,8 +55,8 @@ public class Parque implements IParque {
 
 	public synchronized void salirDelParque(String puerta) throws InterruptedException {
 		// Si no hay salidas por esa puerta, inicializamos
-		if (contadoresPersonasPuerta.get(puerta) == null) {
-			contadoresPersonasPuerta.put(puerta, 0);
+		if (contadoresPersonasSalidaPuerta.get(puerta) == null) {
+			contadoresPersonasSalidaPuerta.put(puerta, 0);
 		}
 
 		// verificamos si podemos salir, si no, esperamos
@@ -62,8 +64,8 @@ public class Parque implements IParque {
             wait();
         }
 		
-		if (contadoresPersonasPuerta.get(puerta) > 0) {
-			contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta) - 1);
+		if (contadoresPersonasSalidaPuerta.get(puerta) < MAX_SALIDAS) {
+			contadoresPersonasSalidaPuerta.put(puerta, contadoresPersonasSalidaPuerta.get(puerta) + 1);
 			contadorPersonasTotales--;
 		}
 		
@@ -78,11 +80,20 @@ public class Parque implements IParque {
 		System.out.println(movimiento + " por puerta " + puerta);
 		System.out.println("--> Personas en el parque " + contadorPersonasTotales); 
 
-		// Iteramos por todas las puertas e imprimimos sus entradas
-		for (String p : contadoresPersonasPuerta.keySet()) {
-			System.out.println("----> Por puerta " + p + " " + contadoresPersonasPuerta.get(p));
+		if(movimiento == "Entrada") {
+			// Iteramos por todas las puertas e imprimimos sus entradas
+			for (String p : contadoresPersonasPuerta.keySet()) {
+				System.out.println("----> Por puerta " + p + " " + contadoresPersonasPuerta.get(p));
+			}
+			System.out.println(" ");
+		} else {
+			// Iteramos por todas las puertas e imprimimos sus entradas
+			for (String p : contadoresPersonasSalidaPuerta.keySet()) {
+				System.out.println("----> Por puerta " + p + " " + contadoresPersonasSalidaPuerta.get(p));
+			}
+			System.out.println(" ");
 		}
-		System.out.println(" ");
+		
 	}
 
 	private int sumarContadoresPuerta() {
@@ -107,7 +118,7 @@ public class Parque implements IParque {
 	}
 
 	protected boolean comprobarAntesDeSalir() { 
-		if (contadorPersonasTotales == MAX_SALIDAS ){
+		if (contadorPersonasTotales == 0 ){
 			return false;
 		}
 		return true;
