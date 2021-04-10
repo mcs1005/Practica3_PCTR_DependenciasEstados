@@ -102,6 +102,12 @@ public class Parque implements IParque {
 		while (iterPuertas.hasMoreElements()) {
 			sumaContadoresPuerta += iterPuertas.nextElement();
 		}
+		
+		Enumeration<Integer> iterPuertas2 = contadoresPersonasSalidaPuerta.elements();
+		while (iterPuertas2.hasMoreElements()) {
+			sumaContadoresPuerta -= iterPuertas2.nextElement();
+		}
+		
 		return sumaContadoresPuerta;
 	}
 
