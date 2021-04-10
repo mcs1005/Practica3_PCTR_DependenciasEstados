@@ -3,8 +3,7 @@ package src.p03.c01;
 /**
  * Clase principal SistemaLanzador. 
  * 
- * 
- * @author Sergio Osuna y Miguel Collado
+ *@author Sergio Osuna y Miguel Collado
  *
  */
 public class SistemaLanzador {
@@ -13,17 +12,17 @@ public class SistemaLanzador {
 		IParque parque = AdaptadorParqueSincronizado.getInstancia();
 		char letra_puerta = 'A';
 		
-		System.out.println("Â¡Parque abierto!");
+		System.out.println("¡Parque abierto!");
 				
 		for (int i = 0; i < Integer.parseInt(args[0]); i++) {
 			
 			String puerta = ""+((char) (letra_puerta++));
 			
-			// CreaciÃ³n de hilos de entrada
+			// Creación de hilos de entrada
 			ActividadEntradaPuerta entradas = new ActividadEntradaPuerta(puerta, parque);
 			new Thread (entradas).start();
 			
-			// CreaciÃ³n de hilos de salida
+			// Creación de hilos de salida
 			ActividadSalidaPuerta salidas = new ActividadSalidaPuerta(puerta, parque);
 			new Thread(salidas).start();
 			
