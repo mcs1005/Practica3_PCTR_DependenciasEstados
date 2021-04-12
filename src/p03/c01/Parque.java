@@ -14,6 +14,7 @@ public class Parque implements IParque {
 
 	private final static int MAX_ENTRADAS = 20;
 	private final static int MAX_SALIDAS = 20;
+	private final static int MIN_ENTRADAS = 0;
 
 	private int contadorPersonasTotales;
 	private Hashtable<String, Integer> contadoresPersonasPuerta;
@@ -124,7 +125,7 @@ public class Parque implements IParque {
 	}
 
 	protected boolean comprobarAntesDeSalir() { 
-		if (contadorPersonasTotales == 0 ){
+		if (contadorPersonasTotales == MIN_ENTRADAS ){
 			return false;
 		}
 		return true;
